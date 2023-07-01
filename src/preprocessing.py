@@ -1,10 +1,10 @@
 import os
 import librosa as lr
-from librosa.display import waveplot
+from librosa.display import waveshow
 import numpy as np
 from glob import glob
 import matplotlib.pyplot as plt
-import imageio
+import imageio.v2 as imageio
 from IPython.display import Audio
 
 
@@ -34,7 +34,7 @@ def fix_audio_segment_to_10_seconds(audio_segment):
 def spectrogram(audio_segment):
     # Compute mel-scaled spectrogram image
     hl = audio_segment.shape[0] // image_width
-    spec = lr.feature.melspectrogram(audio_segment, n_mels=image_height, hop_length=int(hl))
+    spec = lr.feature.melspectrogram(y=audio_segment, n_mels=image_height, hop_length=int(hl))
 
     # Logarithmic amplitudes
     # amplitudes => db
@@ -58,17 +58,17 @@ def to_integer(image_float):
 
 def present_example_on_plt(audio_file):
     audio = load_audio_file(audio_file)
-    waveplot(audio, sr=sample_rate)
+    waveshow(audio, sr=sample_rate)
     plt.show()
 
     audio_fixed = fix_audio_segment_to_10_seconds(audio)
-    waveplot(audio_fixed, sr=sample_rate)
+    waveshow(audio_fixed, sr=sample_rate)
     plt.show()
 
     spectro = spectrogram(audio_fixed)
     plt.imshow(spectro, origin='lower', aspect='auto')
     plt.show()
-    print("Spectogram dim: "+spectro.shape)
+    print("Spectogram dim: " + str(spectro.shape))
 
 
 def present_example_as_img():
@@ -82,7 +82,7 @@ def present_example_as_img():
     plt.imshow(image, origin='lower', aspect='auto')
     plt.show()
 
-    print("Image dim:" + image.shape)
+    print("Image dim:" + str(image.shape))
 
     # listen as an audio
     audio_file_path = os.path.splitext(image_file_path)[0]

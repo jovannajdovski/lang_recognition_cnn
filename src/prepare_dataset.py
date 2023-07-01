@@ -102,7 +102,7 @@ def print_statistics():
             all_files = glob(folder + '*.mp3')
             
             for file in all_files:
-                duration_sec += lr.core.get_duration(filename=file)
+                duration_sec += lr.core.get_duration(path=file)
                 
             duration_h = duration_sec / 60.0 / 60.0
             print('Total duration of ' + lang + ' ' + category + ' is ' + str(round(duration_h, 1)) + ' h')
