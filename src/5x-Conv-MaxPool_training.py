@@ -2,11 +2,13 @@ from glob import glob
 import math
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.layers import Input, Concatenate
+from tensorflow.keras.layers import Input, Dropout
 from tensorflow.keras.optimizers import RMSprop, Nadam
-from tensorflow.keras.applications.inception_v3 import InceptionV3
 from tensorflow.keras.callbacks import EarlyStopping, LearningRateScheduler
 import tensorflow as tf
+
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten
 
 languages = ['english', 'spanish', 'serbian']
 categories = ['train', 'test']
@@ -14,7 +16,7 @@ categories = ['train', 'test']
 data_root_path = '../data/'
 train_path = data_root_path + 'train'
 
-batch_size = 16
+batch_size = 128
 image_width = 500
 image_height = 128
 
@@ -73,11 +75,26 @@ if __name__ == '__main__':
     train_generator = image_data_generator.flow_from_directory(train_path, batch_size=batch_size, class_mode='categorical', target_size=(image_height, image_width), color_mode='grayscale', subset='training')
     validation_generator = image_data_generator.flow_from_directory(train_path, batch_size=batch_size, class_mode='categorical', target_size=(image_height, image_width), color_mode='grayscale', subset='validation')
 
-    img_input = Input(shape=(image_height, image_width, 1))
+    in_dim = (image_height, image_width, 1)
+    out_dim = num_classes
 
-    img_conc = Concatenate(axis=3, name='input_concat')([img_input, img_input, img_input])
+    i = Input(shape=in_dim)
+    m = Conv2D(16, (3, 3), activation='elu', padding='same')(i)
+    m = MaxPooling2D()(m)
+    m = Conv2D(32, (3, 3), activation='elu', padding='same')(m)
+    m = MaxPooling2D()(m)
+    m = Conv2D(64, (3, 3), activation='elu', padding='same')(m)
+    m = MaxPooling2D()(m)
+    m = Conv2D(128, (3, 3), activation='elu', padding='same')(m)
+    m = MaxPooling2D()(m)
+    m = Conv2D(256, (3, 3), activation='elu', padding='same')(m)
+    m = MaxPooling2D()(m)
+    m = Flatten()(m)
+    m = Dense(512, activation='elu')(m)
+    m = Dropout(0.5)(m)
+    o = Dense(out_dim, activation='softmax')(m)
 
-    model = InceptionV3(input_tensor=img_conc, weights=None, include_top=True, classes=num_classes)
+    model = Model(inputs=i, outputs=o)
 
     # model.summary()
 
