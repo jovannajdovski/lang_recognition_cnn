@@ -14,12 +14,12 @@ categories = ['train', 'test']
 data_root_path = '../data/'
 train_path = data_root_path + 'train'
 
-batch_size = 32
+batch_size = 16
 image_width = 500
 image_height = 128
 
 validation_split = 0.1
-initial_learning_rate = 0.045
+initial_learning_rate = 1e-3
 
 num_classes = len(languages)
 
@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
     model = InceptionV3(input_tensor=img_conc, weights=None, include_top=True, classes=num_classes)
 
-    model.summary()
+    # model.summary()
 
     model.compile(optimizer=RMSprop(learning_rate=initial_learning_rate, clipvalue=2.0), loss='categorical_crossentropy', metrics=['accuracy'])
 

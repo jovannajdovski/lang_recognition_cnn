@@ -7,7 +7,7 @@ data_root_path = '../data/'
 model_file = data_root_path + 'model.h5'
 test_path = data_root_path + 'test'
 
-batch_size = 32
+batch_size = 16
 image_width = 500
 image_height = 128
 

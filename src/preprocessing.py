@@ -110,9 +110,7 @@ if __name__ == '__main__':
             
             # preprocess all data
             audio_files[lang + '.' + category] = glob(dataset_path + '/*.mp3') + glob(dataset_path + '/*.wav')
-            
-            # :TODO preprocess augmented data 
-            #audio_files[lang + '.' + category] = glob(dataset_path + '/*.wav')
+
 
     print(audio_files.keys())
 
