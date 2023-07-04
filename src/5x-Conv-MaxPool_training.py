@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.layers import Input, Dropout
 from tensorflow.keras.optimizers import RMSprop, Nadam
-from tensorflow.keras.callbacks import EarlyStopping, LearningRateScheduler
+from tensorflow.keras.callbacks import EarlyStopping, LearningRateScheduler, TensorBoard
 import tensorflow as tf
 
 from tensorflow.keras.models import Model
@@ -16,7 +16,7 @@ categories = ['train', 'test']
 data_root_path = '../data/'
 train_path = data_root_path + 'train'
 
-batch_size = 128
+batch_size = 32
 image_width = 500
 image_height = 128
 
@@ -71,6 +71,9 @@ if __name__ == '__main__':
     print('Steps per Epoch: ' + str(steps_per_epoch))
     print('Validation steps: ' + str(validation_steps))
 
+    tensor_board_filename = '5x-Conv-MaxPool_board'
+    tensorboard = TensorBoard(log_dir='logs/{}'.format(tensor_board_filename))
+
     image_data_generator = ImageDataGenerator(rescale=1./255, validation_split=validation_split)
     train_generator = image_data_generator.flow_from_directory(train_path, batch_size=batch_size, class_mode='categorical', target_size=(image_height, image_width), color_mode='grayscale', subset='training')
     validation_generator = image_data_generator.flow_from_directory(train_path, batch_size=batch_size, class_mode='categorical', target_size=(image_height, image_width), color_mode='grayscale', subset='validation')
@@ -103,7 +106,7 @@ if __name__ == '__main__':
     early_stopping = EarlyStopping(monitor='val_accuracy', mode='max', patience=10, restore_best_weights=True)
     learning_rate_decay = LearningRateScheduler(step_decay, verbose=1)
 
-    history = model.fit(train_generator, validation_data=validation_generator, epochs=60, steps_per_epoch=steps_per_epoch, validation_steps=validation_steps, callbacks=[early_stopping, learning_rate_decay])
+    history = model.fit(train_generator, validation_data=validation_generator, epochs=60, steps_per_epoch=steps_per_epoch, validation_steps=validation_steps, callbacks=[early_stopping, learning_rate_decay, tensorboard])
     model.save(model_file)
 
     show_plot_training_history(history)

@@ -17,7 +17,7 @@ original_dataset_paths['spanish'] = '../data/es/'
 
 data_root_path = '../data/'
 
-num_files_for_each_language = 1000
+num_files_for_each_language = 10000
 train_rate = 0.8
 
 for lang in languages[:-1]:   # skipping serbian
