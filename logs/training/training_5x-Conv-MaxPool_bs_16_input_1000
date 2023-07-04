@@ -1,0 +1,63 @@
+
+Steps per Epoch: 270
+Validation steps: 30
+
+Epoch 1: LearningRateScheduler setting learning rate to 0.0010000000474974513.
+Epoch 1/60
+270/270 [==============================] - 18s 47ms/step - loss: 1.9609 - accuracy: 0.6291 - val_loss: 0.5210 - val_accuracy: 0.6708 - lr: 0.0010
+
+Epoch 2: LearningRateScheduler setting learning rate to 0.0009400000446476042.
+Epoch 2/60
+270/270 [==============================] - 12s 43ms/step - loss: 0.4797 - accuracy: 0.7222 - val_loss: 0.4317 - val_accuracy: 0.7250 - lr: 9.4000e-04
+
+Epoch 3: LearningRateScheduler setting learning rate to 0.0008836000529117881.
+Epoch 3/60
+270/270 [==============================] - 11s 42ms/step - loss: 0.3122 - accuracy: 0.8609 - val_loss: 0.4850 - val_accuracy: 0.7792 - lr: 8.8360e-04
+
+Epoch 4: LearningRateScheduler setting learning rate to 0.0007807489902945235.
+Epoch 4/60
+270/270 [==============================] - 12s 43ms/step - loss: 0.1205 - accuracy: 0.9533 - val_loss: 0.6599 - val_accuracy: 0.8000 - lr: 7.8075e-04
+
+Epoch 5: LearningRateScheduler setting learning rate to 0.0006898698325734585.
+Epoch 5/60
+270/270 [==============================] - 11s 42ms/step - loss: 0.0397 - accuracy: 0.9891 - val_loss: 0.7046 - val_accuracy: 0.8313 - lr: 6.8987e-04
+
+Epoch 6: LearningRateScheduler setting learning rate to 0.0005729948219279758.
+Epoch 6/60
+270/270 [==============================] - 12s 43ms/step - loss: 0.0159 - accuracy: 0.9949 - val_loss: 1.0187 - val_accuracy: 0.7937 - lr: 5.7299e-04
+
+Epoch 7: LearningRateScheduler setting learning rate to 0.0004759203271232545.
+Epoch 7/60
+270/270 [==============================] - 12s 43ms/step - loss: 0.0055 - accuracy: 0.9970 - val_loss: 1.0383 - val_accuracy: 0.8167 - lr: 4.7592e-04
+
+Epoch 8: LearningRateScheduler setting learning rate to 0.0003715743021719995.
+Epoch 8/60
+270/270 [==============================] - 12s 43ms/step - loss: 8.6195e-04 - accuracy: 0.9998 - val_loss: 1.1135 - val_accuracy: 0.8167 - lr: 3.7157e-04
+
+Epoch 9: LearningRateScheduler setting learning rate to 0.00029010625437123695.
+Epoch 9/60
+270/270 [==============================] - 12s 43ms/step - loss: 3.6231e-04 - accuracy: 0.9998 - val_loss: 1.2480 - val_accuracy: 0.8104 - lr: 2.9011e-04
+
+Epoch 10: LearningRateScheduler setting learning rate to 0.00021291014702532667.
+Epoch 10/60
+270/270 [==============================] - 12s 43ms/step - loss: 1.7758e-05 - accuracy: 1.0000 - val_loss: 1.2730 - val_accuracy: 0.8229 - lr: 2.1291e-04
+
+Epoch 11: LearningRateScheduler setting learning rate to 0.000156255614429131.
+Epoch 11/60
+270/270 [==============================] - 12s 43ms/step - loss: 4.9854e-06 - accuracy: 1.0000 - val_loss: 1.3005 - val_accuracy: 0.8208 - lr: 1.5626e-04
+
+Epoch 12: LearningRateScheduler setting learning rate to 0.00010779602590631458.
+Epoch 12/60
+270/270 [==============================] - 12s 43ms/step - loss: 3.4405e-06 - accuracy: 1.0000 - val_loss: 1.3064 - val_accuracy: 0.8188 - lr: 1.0780e-04
+
+Epoch 13: LearningRateScheduler setting learning rate to 7.436522084588774e-05.
+Epoch 13/60
+270/270 [==============================] - 12s 43ms/step - loss: 4.0752e-06 - accuracy: 1.0000 - val_loss: 1.3155 - val_accuracy: 0.8188 - lr: 7.4365e-05
+
+Epoch 14: LearningRateScheduler setting learning rate to 4.8224178902874995e-05.
+Epoch 14/60
+270/270 [==============================] - 12s 43ms/step - loss: 4.4556e-06 - accuracy: 1.0000 - val_loss: 1.3278 - val_accuracy: 0.8167 - lr: 4.8224e-05
+
+Epoch 15: LearningRateScheduler setting learning rate to 3.127229866539936e-05.
+Epoch 15/60
+270/270 [==============================] - 12s 44ms/step - loss: 2.8533e-06 - accuracy: 1.0000 - val_loss: 1.3271 - val_accuracy: 0.8167 - lr: 3.1272e-05
